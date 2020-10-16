@@ -1,7 +1,9 @@
 package com.example.ritotest.network.usecases
 
-import com.example.ritotest.data.models.WorkersWrapper
-import com.example.ritotest.network.Failure
+import com.example.ritotest.core.data.Either
+import com.example.ritotest.data.models.response.WorkersWrapper
+import com.example.ritotest.core.data.Failure
+import com.example.ritotest.core.data.UseCase
 import com.example.ritotest.network.ServerAPI
 import java.net.ConnectException
 import java.net.UnknownHostException
@@ -9,8 +11,8 @@ import javax.inject.Inject
 
 class WorkersUseCase @Inject constructor(
     private val api: ServerAPI
-) : UseCase<WorkersWrapper, Any>() {
-    override suspend fun run(params: Any): Either<Failure, WorkersWrapper> {
+) : UseCase<WorkersWrapper, UseCase.None>() {
+    override suspend fun run(params: UseCase.None): Either<Failure, WorkersWrapper> {
         try {
             val response = api.readInteractions().execute()
             return if (response.isSuccessful) {

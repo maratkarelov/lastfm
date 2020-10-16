@@ -1,4 +1,4 @@
-package com.example.ritotest.network
+package com.example.ritotest.core.data
 
 
 sealed class Failure {

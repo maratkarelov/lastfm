@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ritotest</string>
+    <string name="listeners_counter">(%d listeners)</string>
 </resources>

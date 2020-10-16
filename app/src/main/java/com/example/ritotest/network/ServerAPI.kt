@@ -1,7 +1,7 @@
 package com.example.ritotest.network
 
-import com.example.ritotest.data.models.Perfomer
-import com.example.ritotest.data.models.WorkersWrapper
+import com.example.ritotest.data.models.response.Perfomer
+import com.example.ritotest.data.models.response.WorkersWrapper
 import retrofit2.Call
 import retrofit2.http.GET
 

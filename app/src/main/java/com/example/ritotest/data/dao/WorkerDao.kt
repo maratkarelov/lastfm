@@ -1,11 +1,17 @@
 package com.example.ritotest.data.dao
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
-import com.example.ritotest.data.models.Perfomer
+import androidx.room.Query
+import com.example.ritotest.data.models.entity.PerfomerEntity
 
+@Dao
 interface WorkerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun storeList(data: List<Perfomer>): Long
+    fun storeList(data: List<PerfomerEntity>): Long
+
+    @Query("select * from workers")
+    fun getLocalWorkers(): List<PerfomerEntity>
 
 }
