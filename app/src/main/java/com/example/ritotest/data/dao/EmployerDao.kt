@@ -8,6 +8,6 @@ import com.example.ritotest.data.models.Employer
 @Dao
 interface EmployerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun storeList(data: List<Employer>): Long
+    fun storeList(data: List<Employer>)
 
 }

@@ -1,5 +1,7 @@
 package com.example.ritotest.ui.list
 
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.ritotest.R
 import com.example.ritotest.core.ui.BaseFragment
@@ -18,6 +20,16 @@ class PerfomersFragment : BaseFragment(), ItemClickCallback<PerfomerEntity> {
     override fun initViews() {
         val countries : Array<String> = arrayOf("Italy","Spain", "Ukraine")
         spinner_country.adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_list_item_1, countries)
+        spinner_country.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                viewModel.readPerfomers(countries[position])
+
+            }
+        }
         workersAdapter =
             WorkersAdapter(this, mutableListOf(), getString(R.string.listeners_counter))
 
@@ -25,6 +37,7 @@ class PerfomersFragment : BaseFragment(), ItemClickCallback<PerfomerEntity> {
 
     override fun observeViewModel() {
         viewModel.liveWorkers.observe(viewLifecycleOwner) {
+            workersAdapter.addInteractions(it)
         }
     }
 

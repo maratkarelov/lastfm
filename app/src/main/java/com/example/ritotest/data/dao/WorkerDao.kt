@@ -9,7 +9,7 @@ import com.example.ritotest.data.models.entity.PerfomerEntity
 @Dao
 interface WorkerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun storeList(data: List<PerfomerEntity>): Long
+    fun storeList(data: List<PerfomerEntity>)
 
     @Query("select * from workers")
     fun getLocalWorkers(): List<PerfomerEntity>
